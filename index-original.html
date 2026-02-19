@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+      TerraSynchrony Website
+      This simple, multi‑section website presents the mission, modular product tiers, sector specialties and contact information
+      for TerraSynchrony LLC.  The design uses earth‑toned colours and nature‑inspired imagery to echo the company’s focus on
+      land‑based operations and compliance.  Each section can be easily edited or extended by future designers.
+    -->
+    <title>TerraSynchrony LLC – Geospatial Digital Twin Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Fixed navigation bar with logo and anchors -->
+    <nav>
+        <div class="nav-left">
+            <a href="#home" class="brand">TerraSynchrony</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#sectors">Sectors</a></li>
+            <li><a href="#portal">Client Portal</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero section with background image and call to action -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1>Practical, Defensible Spatial Systems</h1>
+            <p>Turning fragmented data into clarity &amp; compliance for land‑based operators.</p>
+            <a href="#contact" class="cta-btn">Get In Touch</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- About section: mission and company description -->
+        <section id="about" class="about">
+            <h2>Our Mission</h2>
+            <p>TerraSynchrony builds modular, open‑source geospatial systems that turn fragmented maps, spreadsheets, PDFs and field notes into an authoritative digital twin with operational workflows, monitoring, analytics and audit‑ready compliance outputs.  Our mission is to <strong>build practical, defensible spatial systems</strong> that help land‑based operators act with clarity and compliance.</p>
+            <p>We exist because land‑based operations are still run on disconnected toolchains: GIS silos, CAD files, spreadsheets, PDFs and ad hoc field notes.  The result is a familiar mess—no single system of record, manual field documentation, limited monitoring visibility and stressful compliance reporting.  TerraSynchrony standardises 80&nbsp;% of delivery through reusable modules and phased implementations—reducing time‑to‑value, increasing delivery predictability and enabling repeatable cross‑sector expansion.</p>
+        </section>
+
+        <!-- Services section: modular platform tiers -->
+        <section id="services" class="services">
+            <h2>Modular Platform Tiers</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Foundation</h3>
+                    <p>An authoritative digital twin with versioned schemas and governed edits, giving you a single system of record for all spatial data.</p>
+                </div>
+                <div class="card">
+                    <h3>Operations</h3>
+                    <p>Includes Foundation plus field workflows that make data capture fast, mobile‑friendly and audit‑ready—photos, GPS, timestamps and status tracking.</p>
+                </div>
+                <div class="card">
+                    <h3>Monitoring</h3>
+                    <p>Adds time‑series monitoring pipelines to Foundation and Operations, converting remote sensing and IoT signals into actionable alerts and decision support.</p>
+                </div>
+                <div class="card">
+                    <h3>Analytics</h3>
+                    <p>Layer advanced analytics and dashboards onto your data, enabling insight through geospatial and temporal analyses for better decision‑making.</p>
+                </div>
+                <div class="card">
+                    <h3>Compliance Pack</h3>
+                    <p>Generate defensible exhibits, logs and audit packages on demand—ensuring you’re ready for inspections and regulatory requirements.</p>
+                </div>
+                <div class="card">
+                    <h3>Managed Operations</h3>
+                    <p>All tiers plus hosting, updates, support and governance cadence.  Focus on your work while we manage the infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sectors section: industries served -->
+        <section id="sectors" class="sectors">
+            <h2>Sectors We Serve</h2>
+            <div class="cards">
+                <div class="card sector-card">
+                    <h3>CAFO Agriculture</h3>
+                    <p>Nutrient management compliance workflows, manure transport logs, setback and buffer management, runoff risk context and audit‑ready packages.</p>
+                </div>
+                <div class="card sector-card">
+                    <h3>Recreation &amp; Golf</h3>
+                    <p>Asset inventory, maintenance workflows, irrigation and drainage notes, condition tracking and capital planning support for recreation facilities.</p>
+                </div>
+                <div class="card sector-card">
+                    <h3>Forestry</h3>
+                    <p>Stand, road and stream inventory; harvest planning; best management practice inspections and regeneration monitoring.</p>
+                </div>
+                <div class="card sector-card">
+                    <h3>Environmental Compliance</h3>
+                    <p>Inspection workflows, permit artifact management, BMP verification and evidence management for regulator‑ready outputs.</p>
+                </div>
+                <div class="card sector-card">
+                    <h3>Conservation</h3>
+                    <p>Habitat asset management, stewardship workflows, invasive monitoring, grant and reporting dashboards and long‑term change tracking.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Client portal section: login prompt for existing customers -->
+        <section id="portal" class="portal">
+            <h2>Client Portal</h2>
+            <p>If you are an existing TerraSynchrony customer, you can access your project, workflows and reports through our secure client portal.  Please log in below.</p>
+            <form onsubmit="event.preventDefault(); alert('Portal functionality coming soon!');">
+                <div class="form-row">
+                    <label for="portal-email">Email or Username</label>
+                    <input type="text" id="portal-email" name="portal-email" placeholder="Enter your email or username" required>
+                </div>
+                <div class="form-row">
+                    <label for="portal-password">Password</label>
+                    <input type="password" id="portal-password" name="portal-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="cta-btn">Log In</button>
+            </form>
+        </section>
+
+        <!-- Contact section: simple form and details -->
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <p>Ready to modernise your land operations?  We'd love to learn about your needs.  Fill out the form below or email us directly at <a href="mailto:info@terrasynchrony.com">info@terrasynchrony.com</a>.</p>
+            <form onsubmit="event.preventDefault(); alert('Thank you for reaching out!');">
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-row">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we help?" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026&nbsp;TerraSynchrony LLC. All rights reserved. | Remote‑first, United States</p>
+    </footer>
+</body>
+</html>
