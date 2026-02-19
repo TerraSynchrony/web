@@ -2,7 +2,7 @@
   "name": "TerraSynchrony LLC",
   "short_name": "TerraSynchrony",
   "description": "Geospatial Digital Twin Solutions - Practical, Defensible Spatial Systems",
-  "start_url": "/",
+  "start_url": "/web/",
   "display": "standalone",
   "background_color": "#f7f6f2",
   "theme_color": "#0f4c5c",
