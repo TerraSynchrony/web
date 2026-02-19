@@ -25,6 +25,11 @@ Desktop.ini
 *.log
 .cache/
 
+# Backup files
+*.backup
+*-original.*
+*.bak
+
 # Build artifacts (if any are added in the future)
 dist/
 build/
