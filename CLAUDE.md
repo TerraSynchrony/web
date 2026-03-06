@@ -14,12 +14,11 @@ TerraSynchrony LLC is a company specializing in geospatial digital twin solution
 .
 ├── README.md           # Project documentation
 ├── CLAUDE.md           # This file
-└── web/
-    ├── index.html      # Single-page website (all sections)
-    ├── css/
-    │   └── styles.css  # Global stylesheet (CSS variables, grid layout, responsive)
-    └── assets/
-        └── hero-bg.png # Hero section background image
+├── index.html          # Single-page website (all sections)
+├── css/
+│   └── styles.css      # Global stylesheet (CSS variables, grid layout, responsive)
+└── assets/
+    └── hero-bg.png     # Hero section background image
 ```
 
 ## Development Setup
