@@ -6,7 +6,7 @@ This file provides guidance for AI assistants working with the TerraSynchrony we
 
 TerraSynchrony LLC is a company specializing in geospatial digital twin solutions for land-based operations. This repository contains the **static marketing website** — a single-page site presenting the company's mission, modular platform tiers, sector specializations, client portal login, and contact form.
 
-**Tech stack:** Pure HTML5 + CSS3. No JavaScript frameworks, no build tools, no runtime dependencies.
+**Tech stack:** Static HTML5 + CSS3 with minimal inline JavaScript (no JS frameworks, no build tools, no runtime dependencies).
 
 ## Repository Structure
 
