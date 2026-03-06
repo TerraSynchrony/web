@@ -100,7 +100,7 @@ These are stubs. No backend integration exists yet.
 
 ## Deployment
 
-The site deploys via **GitHub Pages** from the `main` branch at `/ (root)`. No CI/CD pipeline or build step is involved — pushing to `main` triggers deployment automatically.
+The site is hosted via **GitHub Pages**, configured to serve from the `main` branch at `/ (root)`. You must first enable GitHub Pages in the repository settings (select `main` as the source and `/ (root)` as the folder) as described in `README.md`. After GitHub Pages is configured, pushes to `main` will deploy the site automatically; there is no separate CI/CD pipeline or build step.
 
 ## Testing
 
