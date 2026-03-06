@@ -1,123 +1,114 @@
-# CLAUDE.md
-
-This file provides guidance for AI assistants working with the TerraSynchrony website repository.
+# CLAUDE.md - AI Assistant Guide for TerraSynchrony Website
 
 ## Project Overview
 
-TerraSynchrony LLC is a company specializing in geospatial digital twin solutions for land-based operations. This repository contains the **static marketing website** — a single-page site presenting the company's mission, modular platform tiers, sector specializations, client portal login, and contact form.
-
-**Tech stack:** Pure HTML5 + CSS3. No JavaScript frameworks, no build tools, no runtime dependencies.
+TerraSynchrony LLC marketing website — a static, single-page site presenting the company's geospatial digital twin platform, service tiers, sector specialties, client portal login, and contact form. Built with pure HTML, CSS, and vanilla JavaScript. No build tools, frameworks, or runtime dependencies.
 
 ## Repository Structure
 
 ```
 web/
-├── index.html          # Single-page website (all sections)
+├── index.html          # Single-page site with anchor-linked sections
 ├── css/
-│   └── styles.css      # Global stylesheet (CSS variables, grid layout, responsive)
+│   └── styles.css      # All styles; CSS variables for theming at :root
 ├── assets/
-│   └── hero-bg.png     # Hero section background image
-├── README.md           # Project documentation
+│   └── hero-bg.png     # Hero background image (~2.7 MB)
+├── README.md           # Project overview and deployment guide
 └── CLAUDE.md           # This file
 ```
 
-## Development Setup
+## Technology Stack
 
-No build step required. To preview locally:
+- **HTML5** — Semantic sections with anchor navigation
+- **CSS3** — CSS Grid, Flexbox, CSS custom properties (variables), media queries
+- **Vanilla JavaScript** — Inline `onsubmit` handlers only (no external JS files)
+- **Google Fonts (CDN)** — Inter (body text) and Lora (headings/brand)
+- **No build system** — No package.json, no bundler, no transpilation
 
+## Page Sections (index.html)
+
+| Section ID   | Purpose                                      |
+|-------------|----------------------------------------------|
+| `#home`     | Hero with background image and CTA           |
+| `#about`    | Company mission and problem statement         |
+| `#services` | Six modular platform tiers (card grid)        |
+| `#sectors`  | Five industry verticals (card grid)           |
+| `#portal`   | Client login form (placeholder functionality) |
+| `#contact`  | Contact form and email link                   |
+
+## CSS Theming
+
+All colours are defined as CSS custom properties in `css/styles.css` at `:root`:
+
+| Variable      | Value     | Usage                     |
+|--------------|-----------|---------------------------|
+| `--primary`  | `#0f4c5c` | Deep teal — headings, nav |
+| `--secondary`| `#2f8f4e` | Forest green — buttons, card titles |
+| `--accent`   | `#a67c52` | Warm brown — hover states  |
+| `--light`    | `#f7f6f2` | Light beige — page background |
+| `--dark`     | `#1b1b1b` | Near black — footer, emphasis |
+| `--text`     | `#333333` | Body text colour           |
+
+When modifying colours, always update the CSS variable rather than hardcoding values.
+
+## Development Workflow
+
+### Running locally
+
+No install or build step required:
 ```bash
-# Any static HTTP server works, e.g.:
-python -m http.server 8000
-# Then open http://localhost:8000
+open index.html   # macOS
+xdg-open index.html  # Linux
 ```
 
-Or simply open `index.html` directly in a browser.
+Or use any local HTTP server (e.g., `python3 -m http.server 8000`).
 
-## Architecture & Key Patterns
+### Deployment
 
-### Single-Page Layout
+The site is designed for **GitHub Pages**. Push to the `main` branch and enable Pages in repository settings pointing to `/ (root)`.
 
-`index.html` is organized into anchor-linked sections: `#home`, `#about`, `#services`, `#sectors`, `#portal`, `#contact`. Navigation uses a fixed top bar with smooth scrolling (`scroll-behavior: smooth`).
-
-### CSS Design System
-
-All theming is controlled via CSS custom properties in `:root` (`css/styles.css:10-17`):
-
-| Variable | Value | Purpose |
-|---|---|---|
-| `--primary` | `#0f4c5c` | Deep teal — headings, labels, footer background |
-| `--secondary` | `#2f8f4e` | Forest green — card headings, CTA buttons |
-| `--accent` | `#a67c52` | Warm brown — hover states |
-| `--light` | `#f7f6f2` | Light beige — page background |
-| `--dark` | `#1b1b1b` | Near black (unused currently) |
-| `--text` | `#333333` | Body text |
-
-### Typography
-
-- **Headings:** Lora (serif) via Google Fonts
-- **Body:** Inter (sans-serif) via Google Fonts
-- Both loaded from `fonts.googleapis.com` in `index.html:14`
-
-### Responsive Layout
-
-- Card grids use `grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))` for automatic responsive columns
-- Media query at `768px` reduces hero heading and paragraph font sizes
-- Navigation is fixed at `z-index: 1000` with semi-transparent background
-
-### Forms
-
-Two forms exist with **placeholder JavaScript** (inline `onsubmit` handlers that show `alert()` messages):
-- **Client Portal** (`#portal`) — login form, currently shows "Portal functionality coming soon!"
-- **Contact** (`#contact`) — contact form, currently shows "Thank you for reaching out!"
-
-These are stubs. No backend integration exists yet.
-
-## Conventions to Follow
-
-### File Organization
-- Keep the flat directory structure: HTML at root, styles in `css/`, media in `assets/`
-- Use a single CSS file unless the stylesheet grows significantly
-- Use relative paths from the CSS directory for asset references (e.g., `../assets/hero-bg.png`)
-
-### Naming
-- CSS classes: **kebab-case** (e.g., `.hero-content`, `.cta-btn`, `.nav-links`, `.form-row`)
-- HTML section IDs: lowercase single words matching navigation anchors (e.g., `id="services"`)
-- CSS variables: `--` prefix with short descriptive names (e.g., `--primary`, `--accent`)
-
-### Styling
-- Use CSS custom properties for colors — never hardcode color values in component rules
-- Exception: `#fff`, `#ccc`, and `rgba()` values for whites, borders, and transparency are used inline
-- Card components use `.card` base class; sector-specific cards add `.sector-card`
-- CTA buttons use the shared `.cta-btn` class
-- Transitions: `0.2s ease` for subtle interactions, `0.3s ease` for buttons
+## Key Conventions
 
 ### HTML
-- Use semantic HTML5 elements: `<nav>`, `<header>`, `<main>`, `<section>`, `<footer>`
-- Include descriptive HTML comments before each major section
-- Forms must have proper `<label>` elements with `for` attributes matching input `id`s
-- New sections should follow the established pattern: `<section id="name" class="name">`
+- Use semantic HTML elements and descriptive comments before each section
+- All sections live inside `<main>` except the nav and hero `<header>`
+- Forms use inline `onsubmit="event.preventDefault(); alert('...');"` as placeholders
+- Navigation uses anchor links (`#about`, `#services`, etc.) for single-page scrolling
 
-## Deployment
+### CSS
+- Use CSS custom properties (`var(--primary)`, etc.) for all colours — never hardcode colour values
+- Card layouts use `display: grid` with `repeat(auto-fit, minmax(250px, 1fr))` for responsive grids
+- Navigation is `position: fixed` with semi-transparent background (`rgba(0, 0, 0, 0.5)`)
+- Fonts: `'Lora', serif` for headings/brand, `'Inter', sans-serif` for body
+- Responsive breakpoint at `768px` for mobile typography adjustments
+- The `.cta-btn` class is shared across all call-to-action buttons (links and submit buttons)
 
-The site deploys via **GitHub Pages** from the `main` branch at `/ (root)`. No CI/CD pipeline or build step is involved — pushing to `main` triggers deployment automatically.
+### Assets
+- Place images and static files in `assets/`
+- Place stylesheets in `css/`
+- Reference assets from CSS using relative paths from `css/` (e.g., `url('../assets/hero-bg.png')`)
 
-## Testing
-
-No automated tests exist. Verify changes by:
-1. Opening `index.html` in a browser (or local HTTP server)
-2. Checking all navigation anchor links scroll to correct sections
-3. Testing responsive layout at mobile (`< 768px`) and desktop widths
-4. Validating forms display and submit handlers fire correctly
+### JavaScript
+- Minimal JS only — no external scripts, no libraries
+- Form handlers are placeholders; actual backend integration is not yet implemented
 
 ## Common Tasks
 
-### Adding a new section
-1. Add a `<section id="new-id" class="new-id">` block in `index.html` inside `<main>`
-2. Add a nav link `<li><a href="#new-id">Label</a></li>` in the `<ul class="nav-links">`
+### Adding a new page section
+1. Add a new `<section id="section-name">` inside `<main>` in `index.html`
+2. Add a nav link `<li><a href="#section-name">Label</a></li>` to `.nav-links`
 3. Add corresponding styles in `css/styles.css`
 
-### Adding a new service/sector card
-Add a `<div class="card">` (or `<div class="card sector-card">`) inside the appropriate `.cards` grid container. The auto-fit grid will accommodate it automatically.
+### Adding a new service or sector card
+Add a `<div class="card">` (or `<div class="card sector-card">` for sectors) inside the relevant `.cards` container. The grid layout will automatically accommodate it.
 
-### Changing the color theme
-Update the CSS custom properties in `:root` at the top of `css/styles.css`. All derived styles reference these variables.
+### Changing the colour scheme
+Update the CSS variables in `:root` at the top of `css/styles.css`. All components reference these variables, so changes propagate site-wide.
+
+## Things to Watch Out For
+
+- **No build/lint/test tooling** — validate HTML and CSS manually or with browser dev tools
+- **Large hero image** — `assets/hero-bg.png` is ~2.7 MB; consider optimizing if performance is a concern
+- **Forms are non-functional** — both the portal login and contact form use `event.preventDefault()` with alert placeholders
+- **No `.gitignore`** — be careful not to commit editor configs, OS files, or other unintended artifacts
+- **Fixed nav overlaps content** — the hero section accounts for this, but new top-level content needs appropriate top padding/margin
