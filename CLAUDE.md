@@ -1,6 +1,4 @@
-# CLAUDE.md
-
-This file provides guidance for AI assistants working with the TerraSynchrony website repository.
+# CLAUDE.md - AI Assistant Guide for TerraSynchrony Website
 
 ## Project Overview
 
@@ -22,75 +20,57 @@ TerraSynchrony LLC is a company specializing in geospatial digital twin solution
         └── hero-bg.png # Hero section background image
 ```
 
-## Development Setup
+## Technology Stack
 
-No build step required. To preview locally:
+- **HTML5** — Semantic sections with anchor navigation
+- **CSS3** — CSS Grid, Flexbox, CSS custom properties (variables), media queries
+- **Vanilla JavaScript** — Inline `onsubmit` handlers only (no external JS files)
+- **Google Fonts (CDN)** — Inter (body text) and Lora (headings/brand)
+- **No build system** — No package.json, no bundler, no transpilation
 
+## Page Sections (index.html)
+
+| Section ID   | Purpose                                      |
+|-------------|----------------------------------------------|
+| `#home`     | Hero with background image and CTA           |
+| `#about`    | Company mission and problem statement         |
+| `#services` | Six modular platform tiers (card grid)        |
+| `#sectors`  | Five industry verticals (card grid)           |
+| `#portal`   | Client login form (placeholder functionality) |
+| `#contact`  | Contact form and email link                   |
+
+## CSS Theming
+
+All colours are defined as CSS custom properties in `css/styles.css` at `:root`:
+
+| Variable      | Value     | Usage                     |
+|--------------|-----------|---------------------------|
+| `--primary`  | `#0f4c5c` | Deep teal — headings, nav |
+| `--secondary`| `#2f8f4e` | Forest green — buttons, card titles |
+| `--accent`   | `#a67c52` | Warm brown — hover states  |
+| `--light`    | `#f7f6f2` | Light beige — page background |
+| `--dark`     | `#1b1b1b` | Near black — footer, emphasis |
+| `--text`     | `#333333` | Body text colour           |
+
+When modifying colours, always update the CSS variable rather than hardcoding values.
+
+## Development Workflow
+
+### Running locally
+
+No install or build step required:
 ```bash
-# Any static HTTP server works, e.g.:
-python -m http.server 8000
-# Then open http://localhost:8000
+open index.html   # macOS
+xdg-open index.html  # Linux
 ```
 
-Or simply open `index.html` directly in a browser.
+Or use any local HTTP server (e.g., `python3 -m http.server 8000`).
 
-## Architecture & Key Patterns
+### Deployment
 
-### Single-Page Layout
+The site is designed for **GitHub Pages**. Push to the `main` branch and enable Pages in repository settings pointing to `/ (root)`.
 
-`index.html` is organized into anchor-linked sections: `#home`, `#about`, `#services`, `#sectors`, `#portal`, `#contact`. Navigation uses a fixed top bar with smooth scrolling (`scroll-behavior: smooth`).
-
-### CSS Design System
-
-All theming is controlled via CSS custom properties in `:root` (`css/styles.css:10-17`):
-
-| Variable | Value | Purpose |
-|---|---|---|
-| `--primary` | `#0f4c5c` | Deep teal — headings, labels, footer background |
-| `--secondary` | `#2f8f4e` | Forest green — card headings, CTA buttons |
-| `--accent` | `#a67c52` | Warm brown — hover states |
-| `--light` | `#f7f6f2` | Light beige — page background |
-| `--dark` | `#1b1b1b` | Near black (unused currently) |
-| `--text` | `#333333` | Body text |
-
-### Typography
-
-- **Headings:** Lora (serif) via Google Fonts
-- **Body:** Inter (sans-serif) via Google Fonts
-- Both loaded from `fonts.googleapis.com` in `index.html:14`
-
-### Responsive Layout
-
-- Card grids use `grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))` for automatic responsive columns
-- Media query at `768px` reduces hero heading and paragraph font sizes
-- Navigation is fixed at `z-index: 1000` with semi-transparent background
-
-### Forms
-
-Two forms exist with **placeholder JavaScript** (inline `onsubmit` handlers that show `alert()` messages):
-- **Client Portal** (`#portal`) — login form, currently shows "Portal functionality coming soon!"
-- **Contact** (`#contact`) — contact form, currently shows "Thank you for reaching out!"
-
-These are stubs. No backend integration exists yet.
-
-## Conventions to Follow
-
-### File Organization
-- Keep the flat directory structure: HTML at root, styles in `css/`, media in `assets/`
-- Use a single CSS file unless the stylesheet grows significantly
-- Use relative paths from the CSS directory for asset references (e.g., `../assets/hero-bg.png`)
-
-### Naming
-- CSS classes: **kebab-case** (e.g., `.hero-content`, `.cta-btn`, `.nav-links`, `.form-row`)
-- HTML section IDs: lowercase single words matching navigation anchors (e.g., `id="services"`)
-- CSS variables: `--` prefix with short descriptive names (e.g., `--primary`, `--accent`)
-
-### Styling
-- Use CSS custom properties for colors — never hardcode color values in component rules
-- Exception: `#fff`, `#ccc`, and `rgba()` values for whites, borders, and transparency are used inline
-- Card components use `.card` base class; sector-specific cards add `.sector-card`
-- CTA buttons use the shared `.cta-btn` class
-- Transitions: `0.2s ease` for subtle interactions, `0.3s ease` for buttons
+## Key Conventions
 
 ### HTML
 - Use semantic HTML5 elements: `<nav>`, `<header>`, `<main>`, `<section>`, `<footer>`
@@ -112,13 +92,21 @@ No automated tests exist. Verify changes by:
 
 ## Common Tasks
 
-### Adding a new section
-1. Add a `<section id="new-id" class="new-id">` block in `index.html` inside `<main>`
-2. Add a nav link `<li><a href="#new-id">Label</a></li>` in the `<ul class="nav-links">`
+### Adding a new page section
+1. Add a new `<section id="section-name">` inside `<main>` in `index.html`
+2. Add a nav link `<li><a href="#section-name">Label</a></li>` to `.nav-links`
 3. Add corresponding styles in `css/styles.css`
 
-### Adding a new service/sector card
-Add a `<div class="card">` (or `<div class="card sector-card">`) inside the appropriate `.cards` grid container. The auto-fit grid will accommodate it automatically.
+### Adding a new service or sector card
+Add a `<div class="card">` (or `<div class="card sector-card">` for sectors) inside the relevant `.cards` container. The grid layout will automatically accommodate it.
 
-### Changing the color theme
-Update the CSS custom properties in `:root` at the top of `css/styles.css`. All derived styles reference these variables.
+### Changing the colour scheme
+Update the CSS variables in `:root` at the top of `css/styles.css`. All components reference these variables, so changes propagate site-wide.
+
+## Things to Watch Out For
+
+- **No build/lint/test tooling** — validate HTML and CSS manually or with browser dev tools
+- **Large hero image** — `assets/hero-bg.png` is ~2.7 MB; consider optimizing if performance is a concern
+- **Forms are non-functional** — both the portal login and contact form use `event.preventDefault()` with alert placeholders
+- **No `.gitignore`** — be careful not to commit editor configs, OS files, or other unintended artifacts
+- **Fixed nav overlaps content** — the hero section accounts for this, but new top-level content needs appropriate top padding/margin
